@@ -81,7 +81,7 @@ switch (color){
 
 var favColor = prompt("What is your favorite color?").toLowerCase();
 analyzeColor(favColor);
-alert(favColor + color);
+alert(favColor + " is a cool color!");
 
 /* ########################################################################## */
 
