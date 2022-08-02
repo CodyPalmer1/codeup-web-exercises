@@ -10,23 +10,23 @@
  * responses written for, return a string stating so
  *
  * Example:
- *  > analyzeColor('blue') // returns "blue is the color of the sky"
- *  > analyzeColor('red') // returns "Strawberries are red"
- *
- *  > analyzeColor('cyan') // returns "I don't know anything about cyan"
- *
- * You should use an if-else-if-else block to return different messages.
- *
- * Test your function by passing various string literals to it and
- * console.logging the function's return value
- */
+ //  *  > analyzeColor('blue') // returns "blue is the color of the sky"
+ //  *  > analyzeColor('red') // returns "Strawberries are red"
+ //  *
+ //  *  > analyzeColor('cyan') // returns "I don't know anything about cyan"
+ //  *
+ //  * You should use an if-else-if-else block to return different messages.
+ //  *
+ //  * Test your function by passing various string literals to it and
+ //  * console.logging the function's return value
+ //  */
 
-function analyzeColor(color){
-    if(color === "blue"){
+function analyzeColor(color) {
+    if (color === "blue") {
         return console.log("blue is the color of the sky.");
-    } else if(color === "red"){
+    } else if (color === "red") {
         return console.log("Strawberries are red.");
-    } else if(color ==="cyan"){
+    } else if (color === "cyan") {
         return console.log("I don't know anything about cyan.");
     } else {
         return console.log("I do not have a response written for that color.");
@@ -35,42 +35,44 @@ function analyzeColor(color){
 
 analyzeColor(prompt("Enter color: ").toLowerCase());
 
-
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
 // - `randomColor`: contains a single random color value from the list (this
-//                  will contain a different color every time the page loads)
+// will contain a different color every time the page loads)
+
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
+
 /**
+ *
  * TODO:
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
 
-// analyzeColor(randomColor);
-// console.log("Here is a random color " + randomColor);
+analyzeColor(randomColor);
+console.log(randomColor);
 
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-var color = prompt("Enter color: ").toLowerCase();
+var userColor = prompt("Enter color: ").toLowerCase();
 
-switch (color){
-    case "blue":
-        console.log("blue is the color of the sky.");
-        break;
-    case "red":
-        console.log("Strawberries are red.");
-        break;
-    case "cyan":
-        console.log("I don't know anything about cyan.");
-        break;
-    default:
-        console.log("I do not have a response written for that color.");
+function analyzeColors(color) {
+    switch (color) {
+        case "blue":
+            return "blue is the color of the sky.";
+        case "red":
+            return "Strawberries are red.";
+        case "cyan":
+            return "I don't know anything about cyan.";
+        default:
+            return "I do not have a response written for that color.";
+    }
 }
+alert(analyzeColors(userColor));
 
 /**
  * TODO:
@@ -105,6 +107,29 @@ alert(favColor + " is a cool color!");
  * return value.
  */
 
+var random = Math.floor(Math.random() * 6);
+
+function calculateTotal(luckyNum, total) {
+    switch (luckyNum) {
+        case 0:
+            return total;
+        case 1:
+            return total - (total * 0.10);
+        case 2:
+            return total - (total * 0.25);
+        case 3:
+            return total - (total * 0.35);
+        case 4:
+            return total - (total * 0.50);
+        case 5:
+            return total - (total * 1);
+        default:
+            return console.log("Error.");
+    }
+
+    //alert("Your total will be: " + calculateTotal());
+}
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -114,7 +139,12 @@ alert(favColor + " is a cool color!");
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+
+let totalBill = Number(prompt("Pleas enter your total bill amount: "));
+alert("Your lucky number was " + luckyNumber + "!");
+alert("Your original price was " + totalBill);
+alert("Your price after the discount will be " + calculateTotal());
 
 /**
  * TODO:
@@ -134,3 +164,31 @@ alert(favColor + " is a cool color!");
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+// 1. make a confirm that ask if a user would like to input a number
+// 2. assign confirm a variable that will be a boolean
+// 3. If confirm variable is true then prompt user for a number and store in a variable and wrap prompt number
+// 4. alert number as even or odd
+// 5. add 100 and alert the number to a function
+// 6. check if number is negative or positive and return that value
+// 7. if user input is NAN then inform that the input was not a number
+
+var isTrue = confirm("Would you like to enter a number?");
+if (isTrue) {
+    var thatNumber = Number(prompt("Enter the number: "));
+    if(isNaN(thatNumber)){
+        alert("This is not a number");
+    } else {
+        if (thatNumber % 2 === 0) {
+            alert("That number is even ");
+        } else if (thatNumber % 2 !== 0) {
+            alert("That number is odd ");
+        }
+        var newNum = Number(thatNumber) + 100;
+        alert(`${thatNumber} + 100 = ${newNum}`);
+        if (thatNumber < 0) {
+            alert(`That number is negative ${thatNumber}`);
+        } else if (thatNumber > 0) {
+            alert(`This number is positive ${thatNumber}`);
+        }
+    }
+}
