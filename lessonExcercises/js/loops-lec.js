@@ -15,6 +15,17 @@
 //     console.log(apple);
 // }
 
-for(var i = 5; i <= 100; i += 5){
-    console.log(i);
-}
+// for(var i = 5; i <= 100; i += 5){
+//     console.log(i);
+//     if(i === 50)
+//         break;
+//     console.log("I is still less than 50");
+// }
+
+    for (var i = 5; i <= 100; i += 5) {
+        console.log(i);
+        if (i === 50) {
+            continue;
+        }
+        console.log(i + " is not 50");
+    }
