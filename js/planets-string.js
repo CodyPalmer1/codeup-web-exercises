@@ -32,6 +32,7 @@
     var string;
     console.log(planetsString.split("|").join("<br>"));
 
+    //BONUS
     planetsArray.push("</ul>");
     planetsArray.unshift("<ul>");
     var planetList = planetsArray.join("<li>");
