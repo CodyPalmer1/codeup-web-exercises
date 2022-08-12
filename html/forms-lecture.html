@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>Forms Lecture</title>
+
+</head>
+<body>
+
+<form method="POST" action="https://request-inspector.glitch.me/">
+    <label for="username">Username: </label>
+    <input id="username" name="username" type="text" placeholder="Enter your username">
+    <br>
+    <label for="email">Email: </label>
+    <input id="email" name="email" type="text" placeholder="Enter your email">
+    <br>
+    <label for="password">Password: </label>
+    <input id="password" name="password" type="text" placeholder="Enter your password">
+
+    <button type = "submit">Sign up</button>
+</form>
+
+<form action="https://request-inspector.glitch.me" method="GET">
+    <label for="zipcode">Zipcode</label>
+    <input type="text" name="zipcode" id="zipcode" placeholder="Input a zipcode">
+    <button type="submit">Search</button>
+</form>
+<a href="https://request-inspector.glitch.me?zipcode=78205">Search in ZIP Code 78205</a>
+<br>
+<label>A</label> <input type="radio" name="quiz_question_1" value="a"><br>
+<label>B</label> <input type="radio" name="quiz_question_1" value="b"><br>
+<label>C</label> <input type="radio" name="quiz_question_1" value="c"><br>
+<label>D</label> <input type="radio" name="quiz_question_1" value="d"><br>
+<br>
+
+<select name="Choice">
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+</select>
+</body>
+</html>
