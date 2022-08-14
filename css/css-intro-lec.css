@@ -1,6 +1,22 @@
-.general-text{
+.general-text, #general-text, #extra, h2{
     color:green;
 }
-/*.general-text{*/
+/*#general-text{*/
 /*    color: red;*/
+/*}*/
+#myH1{
+    color: blue;
+}
+.combo-classes{
+    text-decoration: underline;
+}
+.combo-classes h4{
+    text-align: center;
+}
+#myContainer>h3{
+    text-align: center;
+}
+
+/*#extra{*/
+/*    text-align: center;*/
 /*}*/
