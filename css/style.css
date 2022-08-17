@@ -1,4 +1,27 @@
-.fancy-header {
-    color: purple; /* single line comment */
+#mainHeader{
+    text-align: center;
     text-decoration: underline;
+    color: red;
+}
+body{
+    background-color: #848487;
+    background-image: url(https://sproutsocial.com/insights/social-media-image-sizes-guide/);
+    font-family: "Devanagari MT" ;
+
+}
+
+li{
+    list-style-type: armenian;
+}
+
+td, tr{
+    font-family: fantasy;
+    padding: 5px;
+}
+
+a:hover{
+    color:limegreen;
+}
+a:visited{
+    color:red;
 }
