@@ -1,0 +1,32 @@
+div {
+    display: flex;
+
+}
+
+/*!* screen sizes 500px and up *!*/
+/*@media screen and (min-width:500px) {*/
+/*    p {*/
+/*        color: red;*/
+/*    }*/
+/*    div{*/
+/*        flex-direction: row;*/
+/*    }*/
+/*}*/
+
+/*!* screen sizes between 960px and 1200px *!*/
+/*@media screen and (max-width:500px) {*/
+/*    div{*/
+/*        flex-direction: column;*/
+/*    }*/
+/*}*/
+
+@media screen and (min-width: 500px) and (max-width: 800px){
+    /*p{*/
+    /*    font-weight: bold;*/
+    /*}*/
+
+    div{
+        /*font-weight: bold;*/
+        flex-wrap: wrap;
+    }
+}
