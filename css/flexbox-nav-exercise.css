@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    font-family: "Work Sans";
+}
+body {
+    margin: 0;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    background: gray;
+}
+ul {
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* made unordered list a flex container */
+}
+nav a {
+    text-decoration: none;
+    color: black;
+    font-family: Verdana;
+    display: inline-block; /* inline-block to increase clickable area beyond the text */
+    padding: 1em; /* increases clickable area of anchor tags on all sides by 1em */
+}
+nav a:hover {
+    color: blue;
+}
+nav ul li:nth-child(4) {
+    /*
+        this allows the last flex item to be right justified
+        by filling remaining space to the left of the flex item with margin
+    */
+    margin-left: auto;
+}
+
+h1{
+    font-size: 1.7em;
+    padding: .2em;
+    justify-content: center;
+    font-family: "Montserrat";
+}
+li{
+    font-size: 15px;
+    font-weight: bold;
+}
