@@ -24,5 +24,27 @@ button{
 }
 h1{
     text-align: center;
+}
+h2{
+    margin-left: 135px;
+}
 
+#sizeAndCrust, #cheeseAndSauce, #toppings{
+    width: 200px;
+}
+#pizzaTabs, #pizzaTabContent{
+    margin-left: 135px;
+    margin-right: 135px;
+}
+#blueHeading{
+    color: white;
+    background-color: #0c6efd;
+}
+#option, #option1{
+    margin: 1em;
+    /*margin-right: 1em;*/
+}
+.form-check{
+    margin: 15px;
+    padding-left:20px;
 }
