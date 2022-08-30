@@ -5,96 +5,113 @@
     <title>DOM: Query and Modify</title>
     <link href="../js/dom-query-js.js">
 </head>
-<body>
+<body id="bodyColor" style="background-color: #c77575">
+<div id="textColor">
+    <h1 id="main-header">Hello World!</h1>
+    <ul>
+        <li data-dbid="1">Item 1</li>
+        <li data-dbid="2">Item 2</li>
+        <li data-dbid="3">Item 3</li>
+        <li data-dbid="4">Item 4</li>
+        <li data-dbid="5">Item 5</li>
+    </ul>
+    <h2 id="sub-header">Hello Again.</h2>
+    <p class="sub-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <button id="btn1">Click Me Twice!</button>
+    <br>
+    <br>
+    <button id="btn2">Don't Click Me!</button>
+    <br>
+    <br>
+    <button id="btn3">Change text color!</button>
+    <br>
+    <br>
+    <button id="btn4">Change the background color!</button>
+    <br>
+    <br>
+    <button id="btn5">Swap Color!</button>
+    <script>
+        (function () {
+            "use strict";
+            // TODO: Uncomment next line and get the main header element by id
+            var mainHeader = document.getElementById('main-header');
+            console.log(mainHeader);
 
-<h1 id="main-header">Hello World!</h1>
-<ul>
-    <li data-dbid="1">Item 1</li>
-    <li data-dbid="2">Item 2</li>
-    <li data-dbid="3">Item 3</li>
-    <li data-dbid="4">Item 4</li>
-    <li data-dbid="5">Item 5</li>
-</ul>
-<h2 id="sub-header">Hello Again.</h2>
-<p class="sub-paragraph">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Duis aute irure dolor in
-    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-    culpa qui officia deserunt mollit anim id est laborum.
-</p>
-<button id="btn1">Click Me Twice!</button>
-<br>
-<br>
-<button id="btn2">Don't Click Me!</button>
-<br>
-<br>
-<button id="btn3">GO COWBOYS!!!!!!!!!!</button>
-<br>
-<br>
-<button id="btn4">Click the first button!</button>
-<script>
-    (function () {
-        "use strict";
-        // TODO: Uncomment next line and get the main header element by id
-        var mainHeader = document.getElementById('main-header');
-        console.log(mainHeader);
+            // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+            mainHeader.innerHTML = "JavaScript is Cool";
 
-        // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-        mainHeader.innerHTML = "JavaScript is Cool";
+            // TODO: Uncomment the next line and get the sub header element by id
+            var subHeader = document.getElementById('sub-header');
+            console.log(subHeader);
 
-        // TODO: Uncomment the next line and get the sub header element by id
-        var subHeader = document.getElementById('sub-header');
-        console.log(subHeader);
+            // TODO: Set the text color of subHeader to blue
+            subHeader.style.color = "blue";
 
-        // TODO: Set the text color of subHeader to blue
-        subHeader.style.color = "blue";
+            // TODO: Uncomment the next line and get all list items
+            var listItems = document.getElementsByTagName('li');
+            console.log(listItems);
 
-        // TODO: Uncomment the next line and get all list items
-        var listItems = document.getElementsByTagName('li');
-        console.log(listItems);
+            // TODO: Set text color on every other list item to grey
+            for (let i = 0; i < listItems.length; i++) {
 
-        // TODO: Set text color on every other list item to grey
-        for(let i = 0; i < listItems.length; i++){
-
-            if(i % 2 === 1){
-                listItems[i].style.color = "grey"
+                if (i % 2 === 1) {
+                    listItems[i].style.color = "grey"
+                }
+                if (listItems[i].getAttribute("data-dbid") === "1") {
+                    listItems[i].style.color = 'blue';
+                }
             }
-            if(listItems[i].getAttribute ("data-dbid") === "1"){
-                listItems[i].style.color = 'blue';
+            // TODO: Set text color of li with dbid = 1 to blue
+
+            // TODO: Uncomment the next line and get all elements with class name sub-paragraph
+            var subParagraphs = document.getElementsByClassName('sub-paragraph');
+
+            // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+            subParagraphs[0].innerHTML = "Mission Accomplished!";
+
+            var listener = function (event) {
+                alert("LESSSSSS GOOOOOOOOO");
             }
-        }
-        // TODO: Set text color of li with dbid = 1 to blue
+            document.getElementById('btn1').addEventListener('dblclick', listener);
 
-        // TODO: Uncomment the next line and get all elements with class name sub-paragraph
-        var subParagraphs = document.getElementsByClassName('sub-paragraph');
+            var eventListener = function (event) {
+                alert("NOOOOOOOOOOOOO");
+            }
+            document.getElementById('btn2').addEventListener('click', eventListener)
 
-        // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-        subParagraphs[0].innerHTML = "Mission Accomplished!";
+            var textListener = function (event) {
+                textColor.setAttribute("style", "color:white");
+            }
+            document.getElementById('btn3').addEventListener('click', textListener)
 
-        var listener = function (event){
-            alert("LESSSSSS GOOOOOOOOO");
-        }
-        document.getElementById('btn1').addEventListener('dblclick', listener);
+            var activeListener = function (event) {
+                bodyColor.setAttribute("style", "background-color:teal");
+            }
+            document.getElementById('btn4').addEventListener('click', activeListener)
 
-        var eventListener = function(event){
-            alert("NOOOOOOOOOOOOO");
-        }
-        document.getElementById('btn2').addEventListener('click', eventListener)
+            var btn5 = document.querySelector('#btn5');
+            btn5.addEventListener('click', function () {
+                console.log("event listener fired off")
+                if (this.style.backgroundColor === '#c77575') {
+                    this.style.backgroundColor = '#c77575';
+                }
+                else {
+                    this.style.backgroundColor = 'red';
+                }
+            })
 
-        var cowboysListener = function(event){
-            alert("This is our year. Feed Zeke. Dak Attack. JERRRYYYYY WORLDDD WOOOOOO");
-        }
-        document.getElementById('btn3').addEventListener('click', cowboysListener)
 
-        var activeListener = function(event){
-            alert("Dang it! You should have clicked the first.");
-        }
-        document.getElementById('btn4').addEventListener('click', activeListener)
-    })();
+            })();
 
-</script>
+    </script>
+</div>
 </body>
 </html>
