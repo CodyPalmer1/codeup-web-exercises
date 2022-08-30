@@ -56,24 +56,32 @@ return parseFloat(input);
 // }
 
 function add(input1, input2){
-if(isNaN(parseFloat(input1)) || (isNaN(parseFloat(input2)))){
-return false
-} else {
+    if(isNaN(parseFloat(input1)) || (isNaN(parseFloat(input2)))){
+        return false
+    } else {
 
-}
-return Number(input1) + Number(input2);
+    }
+    return Number(input1) + Number(input2);
 }
 
 // 7. Write a function named multiply that takes in two inputs. If both inputs provided are numeric, multiply returns the product of the first input multiplied by the second. If either or both inputs are not numeric, multiply should return false.
 
-function multiply(input1, input2) {
-if (typeof input1 == "number" && typeof input2 == "number") {
-return (input1 * input2)
-} else if (input1 === "2" && input2 === "3") {
-return 6;
-} else {
-return false
-}
+// function multiply(input1, input2) {
+//     if (typeof input1 == "number" && typeof input2 == "number") {
+//         return (input1 * input2)
+//     } else if (input1 === "2" && input2 === "3") {
+//         return 6;
+//     } else {
+//         return false
+//     }
+// }
+
+function multiply(input1, input2){
+    if (isNaN(parseFloat(input1) || (isNaN(parseFloat(input2))))){
+        return false;
+    } else {
+    }
+    return Number(input1) * Number(input2);
 }
 
 // 8. Define a function named square. If the provided input is numeric, square should return the number multiplied by itself. If the input is not numeric, square, should return false.
