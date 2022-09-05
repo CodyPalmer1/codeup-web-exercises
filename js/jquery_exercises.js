@@ -2,4 +2,6 @@ $(function() {
     alert( 'The DOM has finished loading!' );
 });
 
-$( ".codeup").css( "border", "3px red" );
+$(function() {
+    $( '#list').css( "border", "3px solid red");
+});
