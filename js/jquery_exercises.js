@@ -3,5 +3,7 @@ $(function() {
 });
 
 $(function() {
-    $( '#list').css( "border", "3px solid red");
+    $( 'li').css( "font-size", "20px");
+    $('h1, p, li').css("background-color", '#FFFF00');
+    // $('h1').css("alert", "h1")
 });
