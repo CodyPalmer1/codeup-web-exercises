@@ -8,17 +8,23 @@
     <title>jQuery Lecture Work</title>
 </head>
 <body>
-<h1 id="heading" class="codeup text-center">Heading</h1>
-<p id="paragraph" class="codeup color: red">Paragraph Tag</p>
-<ul id="list" class="codeup">
-    <li id="item1" class="text-bg-dark">List Item 1</li>
-    <li id="item2" class="text-bg-info">List Item 2</li>
-    <li id="item3" class="text-bg-primary">List Item 3</li>
-    <li id="item4" class="text-bg-secondary">List Item 4</li>
-</ul>
-<div id="divElement" class="text-decoration-underline">Div Element</div>
+<div id="divElement" class="text-decoration-underline">Div Element
+    <h1 id="heading" class="codeup text-center">Heading</h1>
+    <p id="paragraph" class="codeup color: red">Paragraph Tag</p>
+    <ul id="list" class="codeup">
+        <li id="item1" class="items">List Item 1</li>
+        <li id="item2" class="items">List Item 2</li>
+        <li id="item3" class="items">List Item 3</li>
+        <li id="item4" class="items">List Item 4</li>
+    </ul>
+</div>
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="../js/jquery_exercises.js"></script>
+<script>
+    $('li, h1, p').css("background-color", '#FFFF00');
+    alert($('h1').html());
+</script>
 </body>
 </html>
