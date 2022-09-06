@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Click me to turn me red!</h1>
+<p>Please type something into this form:</p>
+<form>
+    <input type="text" id="textfield" name="textfield" placeholder="Type Here"/>
+</form>
+<button id="offBtn">Turn Off H1</button>
+<button id="onBtn">Turn On H1</button>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script>
+    // $('#textfield').keydown(function () {
+    //     $(this).css('width', '90%').css('height', '75px').css('font-size', '50px')
+    // })
+
+    // $('#textfield').keydown(function () {
+    //     console.log($(this).val()); // This gets direct value
+    //     //console.log($(e.key)); // This gets the original key pressed.
+    // });
+
+    // $('#textfield').keypress(function (e) {
+    //     // $(this).css('width', '90%').css('height', '75px').css('font-size', '50px')
+    //     console.log("Event used.")
+    //     //console.log($(this).val()); // This gets direct value
+    //     //console.log($(e.key)); // This gets the original key pressed.
+    // })
+
+    // $('#textfield').keyup(function (e) {
+    //     // $(this).css('width', '90%').css('height', '75px').css('font-size', '50px')
+    //     console.log("Event used.")
+    //     //console.log($(this).val()); // This gets direct value
+    //     //console.log($(e.key)); // This gets the original key pressed.
+    // })
+
+    $('h1').on('click', function(){
+        $(this).css('background', 'red').css('width', '25%');
+    });
+    $('#offBtn').on('click', function(){
+        $('h1').css('background', 'none').off();
+
+    });
+    $('#onBtn').click(function(){
+        $('h1').css('background', 'red').css('width', '25%');
+    });
+
+
+</script>
+</body>
+</html>

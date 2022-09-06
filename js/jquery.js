@@ -1,0 +1,3 @@
+$(document).keyup(function(){
+    $(this)
+})
