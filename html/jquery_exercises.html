@@ -23,8 +23,29 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="../js/jquery_exercises.js"></script>
 <script>
-    $('li, h1, p').css("background-color", '#FFFF00');
-    alert($('h1').html());
+    // $('h1').click()
+    //
+    // var fun = function(){
+    //     console.log("My click event");
+    // }
+    // header.click(fun);
+
+    //MOUSE EVENTS
+    $('h1').click(function () {
+        $('h1').css('background', 'red');
+    });
+
+    $('p').dblclick(function () {
+        $('p').css('font-size', '18px');
+    });
+
+    $('li').hover(function () {
+            $(this).css('color', 'red');
+        },
+        function () {
+            $(this).css('color', 'black');
+        })
+$("#codeup")
 </script>
 </body>
 </html>
