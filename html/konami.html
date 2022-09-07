@@ -6,14 +6,16 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 </head>
-<body id="theBody">
+<body id="theBody" style="position: fixed">
 <div class="mainContent">
     <h1 class="text-center">DO YOU KNOW KONAMI CODE?</h1>
     <h4 class="text-center">If so, please enter it now.</h4>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<!--Js linked-->
 <script src="../js/jquery.js"></script>
+<!--Contra source-->
 <iframe src="https://www.retrogames.cc/embed/16841-contra-usa.html" style="" width="1px" height="1px" frameborder="no"
         allowfullscreen="true" scrolling="no"></iframe>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -24,37 +26,37 @@
 <script>
     "use strict";
     //Mapping of Kanomi Code to Keys so they will be able to be referenced later.
-    var selectKeys = {37: 'left', 38: 'up', 39: 'right', 40: 'down', 65: 'a', 66: 'b', 13: 'enter'};
+    var selectKeys = {37: 'left', 38: 'up', 39: 'right', 40: 'down', 66: 'b', 65: 'a', 13: 'enter'};
     //Konami Code listed below
-    var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'a', 'b', 'enter'];
-    var userPosition = 0;
+    var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
+    var userCode = 0;
 
     //KeyUp event listener
     $(document).keyup(function (e) {
         var key = selectKeys[e.keyCode]; // get value of the key code from the key map
-        var requiredKey = konamiCode[userPosition]; // get value of key from the konami code
+        var requiredKey = konamiCode[userCode]; // get value of key for the konami-code
         console.log(e.keyCode);
 
         if (key == requiredKey) { // compare key from key map with the required key
-            userPosition++;
-            if (userPosition == konamiCode.length) {
+            userCode++;
+            if (userCode == konamiCode.length) {
                 konamiCodeInProgress(); //if last key is met, use konamiCodeInProgress function
-                userPosition = 0;
+                userCode = 0;
             }
         } else {
-            userPosition = 0;
+            userCode = 0;
         }
     });
 //FUNCTION TO RUN IF KONAMI CODE PASSES
     function konamiCodeInProgress() {
         alert('KONAMI CODE ENTERED +30 ADDITIONAL LIVES'); // ALERT USER ABOUT LIVES
-        $('mainContent').css('visibility', 'hidden');
+        $('mainContent').css('visibility', 'hidden').css('height', '1px').css('width', '1px');
         $('h1, h4').css('visibility', 'hidden'); //One of these two hide the text on the second screen
-        $('body').css('justify-content', 'center').css('background-image', 'url(../img/ContraScreenShot.jpeg)').css('background-attachment', 'fixed'); //aligns and sets background to fixed position
-        $('p').css('border', '5px solid white').css('visibility', 'visible').css('height', 'auto').css('width', '900').css('margin-left', '275px').css('backgroundColor', 'rgba(0,0,0,0.88)').css('color', 'white');
-        var src = $("iframe").css('height', '500').css('width', '900').css('margin-left', '275px').attr("https://www.retrogames.cc/embed/16841-contra-usa.html").split('?')[0];
+        $('body').css('position', 'static').css('justify-content', 'center').css('background-image', 'url(../img/ContraScreenShot.jpeg)').css('background-attachment', 'fixed'); //aligns and sets background to fixed position
+        $('p').css('border', '5px solid white').css('visibility', 'visible').css('height', 'auto').css('width', '900').css('margin-left', '275px').css('backgroundColor', 'rgba(0,0,0,0.88)').css('color', 'white'); //Paragraph tag styling and posititon
+        var src = $("iframe").css('height', '500').css('width', '900').css('margin-left', '275px').attr("https://www.retrogames.cc/embed/16841-contra-usa.html").split('?')[0]; //This includes the game into the webpage
         alert(src);
-        $('#konamiPic').css('border', '5px solid white').css('visibility', 'visible');
+        $('#konamiPic').css('border', '5px solid white').css('style', 'visibility visible'); //Attempt to add img to page.
     }
 </script>
 </body>
