@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous">
+</script>
+<script>
+    $.ajax("https://swapi.dev/api/people/1/?format=wookiee").done(function(data) {
+        console.log(data);
+        alert("AJAX call completed successfully!");
+    });
+</script>
+</body>
+</html>
