@@ -47,16 +47,16 @@
         $(this).css('background', '#ff6200')
     });
 
-    // $('.grid>div').on('click', function(){
-    //     let currentColor = $(this).css('background-color');
-    //     let orange = 'rgb(255, 165, 0)';
-    //     let white = 'rgb(255, 255, 255)';
-    //     if(currentColor === orange){
-    //         $(this).css('background-color', white)
-    //     } else {
-    //         $(this).css('background-color', orange)
-    //     }
-    // });
+    $('.grid>div').on('click', function(){
+        let currentColor = $(this).css('background-color');
+        let orange = 'rgb(255, 165, 0)';
+        let white = 'rgb(255, 255, 255)';
+        if(currentColor === orange){
+            $(this).css('background-color', white)
+        } else {
+            $(this).css('background-color', orange)
+        }
+    });
 
 
 </script>
