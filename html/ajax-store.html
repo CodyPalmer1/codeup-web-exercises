@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Online Store</title>
+    <style>
+        table {
+            margin: 0 auto;
+            font-size: large;
+            border: 1px solid black;
+        }
+
+        h1 {
+            text-align: center;
+            color: #006600;
+            font-size: xx-large;
+            font-family: 'Gill Sans',
+            'Gill Sans MT', ' Calibri',
+            'Trebuchet MS', 'sans-serif';
+        }
+
+        td {
+            background-color: #E4F5D4;
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            font-weight: bold;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        td {
+            font-weight: lighter;
+        }
+    </style>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Categories</th>
+    </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    (function() {
+        "use strict";
+        // TODO: Create an AJAX GET request for the file under data/inventory.json
+
+        $(document).ready(function () {
+
+            // FETCHING DATA FROM JSON FILE
+            $.get("../data/inventory.json").done(function (data) {
+                    var inventory = '';
+
+                    // ITERATING THROUGH OBJECTS
+                    $.each(data, function (key, value) {
+
+                        //CONSTRUCTION OF ROWS HAVING
+                        // DATA FROM JSON OBJECT
+                        inventory += '<tr>';
+                        inventory += '<td>' +
+                            value.title + '</td>';
+
+                        inventory += '<td>' +
+                            value.quantity + '</td>';
+
+                        inventory += '<td>' +
+                            value.price + '</td>';
+
+                        inventory += '<td>' +
+                            value.categories + '</td>';
+
+                        inventory += '</tr>';
+                    });
+
+                    //INSERTING ROWS INTO TABLE
+                    $('#products').append(inventory);
+                });
+        });
+
+        $.post("../data/inventory.json", {
+            title: "Saw",
+            quantity: "10",
+            price: "100",
+            categories: "tool"
+        }).done(function(data) {
+            // do something with the response
+        });
+
+
+        // TODO: Take the data from inventory.json and append it to the products table
+        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+        //             its contents and fields
+        //       HINT: You will want to target #insertProducts for your new HTML elements
+    })();
+</script>
+
+</body>
+</html>
