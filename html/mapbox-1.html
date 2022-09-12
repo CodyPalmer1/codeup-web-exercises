@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Mapbox Map</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>My First Mapbox Map!</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29keXBhbG1lciIsImEiOiJjbDd5eG9rYXAxM3lyM3Zxc29iY3Fwd3NmIn0.YKqPdH3ykFEggT7SokyDgA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-101.8313, 35.2220]
+    });
+
+    <!--TODO: In this file, create a Mapbox map that shows your home town. -->
+    <!--TODO: After 5 seconds, have the map automatically change to a map of the entire United States using a satellite style. -->
+    <!--TODO: Use a setTimeout function to achieve this.-->
+
+    setTimeout(function(){
+        map.setCenter([-95.7129, 37.0902]);
+        map.setZoom(3);
+        map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
+    }, 5000);
+
+</script>
+</body>
+</html>
+
