@@ -1,9 +1,149 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Favorite Restaurant</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+    <!-- Custom CSS -->
+    <style>
+        h1{
+            text-align: center;
+            color: white;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        body{
+            background-image: url('../img/wavy.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        #map {
+            /* the width and height may be set to any size */
+            width: 80%;
+            height: 500px;
+            margin: auto;
+            border-radius: 75px;
+            border: 5px solid #99afce;
+        }
+        #btn, #zoomBtn {
+            display: flex;
+            align-items: center;
+            margin: auto;
+        }
+    </style>
 </head>
-<body>
+<body background="../img/abstractBackground.png">
+<h1>Favorite Restaurant</h1>
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+<h1 id="coords"></h1>
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<!-- Custom JS -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="../js/mapbox-geocoder-utils.js"></script>
+<script src="../js/keys.js"></script>
+<button type="button" id="btn">Hide Markers</button>
+<!--<div  id="zoom">-->
+<!--    <p>Select your zoom level:</p>-->
+<!--    <label>-->
+<!--        <select>-->
+<!--            <option value="5">5</option>-->
+<!--            <option value="15">15</option>-->
+<!--            <option value="20">20</option>-->
+<!--        </select>-->
+<!--    </label>-->
+<!--</div>-->
 
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29keXBhbG1lciIsImEiOiJjbDd5eG9rYXAxM3lyM3Zxc29iY3Fwd3NmIn0.YKqPdH3ykFEggT7SokyDgA';
+
+    // let map = new mapboxgl.Map({
+    //     container: 'map', // container ID
+    //     style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    //     center: [-97.13978, 33.2148], // starting position [lng, lat]
+    //     zoom: 12 // starting zoom
+    // });
+
+    // let popup = new mapboxgl.Popup() //Popup created for first marker
+    //     .setHTML('El Matador Restaurant'); // Text in popup on first marker
+    //
+    // // 720 W University Dr, Denton, TX 76201-1890 =  lat: 33.2307 lon: -97.13978 // Favorite resturant
+    // let marker1 = new mapboxgl.Marker() //Marker is created
+    //     .setLngLat([-97.1399779, 33.2319059]) // Sets location
+    //     .setPopup(popup) // Sets marker to popup
+    //     .addTo(map); // Adds to map
+    //
+    // let popup2 = new mapboxgl.Popup() //Popup created for second marker
+    //     .setHTML('North Point Cafe'); // Text in popup on second marker
+    //
+    // // 2000 W University Dr, Denton, TX 76201
+    // let marker2 = new mapboxgl.Marker() //Marker is created
+    //     .setLngLat([-97.1547744, 33.2299526]) // Sets location
+    //     .setPopup(popup2) // Sets marker to popup
+    //     .addTo(map); // Adds to map
+    //
+    // let popup3 = new mapboxgl.Popup() //Popup created for Third marker
+    //     .setHTML('Gangnam Chicken'); // Text in popup on Third marker
+    //
+    // // 321 W Hickory St #100, Denton, TX 76201
+    // let marker3 = new mapboxgl.Marker() //Marker is created
+    //     .setLngLat([-97.135524, 33.214494]) // Sets location
+    //     .setPopup(popup3) // Sets marker to popup
+    //     .addTo(map); // Adds to map
+
+    "use strict";
+
+
+    var restaurants = [
+        {
+            'name': 'El Matador Restaurant',
+            'address': '720 W University Dr, Denton, TX 76201-1890',
+            'info': 'DESCRIPTION: Great Tex-Mex with affordable prices.'
+        },
+        {
+            'name': 'North Point Cafe',
+            'address': '2000 W University Dr, Denton, TX 76201',
+            'info': 'DESCRIPTION: A great selection for both breakfast and lunch with amazing quality.'
+        },
+        {
+            'name': 'Gangnam Chicken',
+            'address': '321 W Hickory St #100, Denton, TX 76201',
+            'info': 'DESCRIPTION: Gangnam Chicken has some fo the best fried wings you will ever try.'
+        }
+    ];
+
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-97.13978, 33.2148], // starting position [lng, lat]
+        zoom: 12 // starting zoom
+    });
+
+    restaurants.forEach(function (restaurant) {
+        geocode(restaurant.address, MAPBOX_TOKEN).then(function (results) {
+            var popup = new mapboxgl.Popup()
+                .setHTML('<h3>' + restaurant.name + '</h3>' + '<h5>' + restaurant.info + '</h5>');
+
+            var marker = new mapboxgl.Marker()
+                .setPopup(popup)
+                .setLngLat(results)
+                .addTo(map);
+        });
+    });
+// function zoom(select) {
+//     if (select === 5) {
+//         map.setZoom(5);
+//     } else if (select === 15) {
+//         map.setZoom(15);
+//     } else if (select === 20) {
+//         map.setZoom(20)
+//     }
+// }
+</script>
 </body>
 </html>

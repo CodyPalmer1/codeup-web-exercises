@@ -27,22 +27,67 @@
 <!-- Custom JS -->
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiY29keXBhbG1lciIsImEiOiJjbDd5eG9rYXAxM3lyM3Zxc29iY3Fwd3NmIn0.YKqPdH3ykFEggT7SokyDgA';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [-101.8313, 35.2220]
-    });
+    // var map = new mapboxgl.Map({
+    //     container: 'map',
+    //     style: 'mapbox://styles/mapbox/streets-v9',
+    //     zoom: 10,
+    //     center: [-101.8313, 35.2220]
+    // });
 
     <!--TODO: In this file, create a Mapbox map that shows your home town. -->
     <!--TODO: After 5 seconds, have the map automatically change to a map of the entire United States using a satellite style. -->
     <!--TODO: Use a setTimeout function to achieve this.-->
 
-    setTimeout(function(){
-        map.setCenter([-95.7129, 37.0902]);
-        map.setZoom(3);
-        map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
-    }, 5000);
+    // setTimeout(function(){
+    //     map.setCenter([-95.7129, 37.0902]);
+    //     map.setZoom(3);
+    //     map.setStyle('mapbox://styles/mapbox/satellite-v9')
+    // }, 5000);
+
+    // const marker = new mapboxgl.Marker()
+    //     .setLngLat([-95.7129, 37.0902])
+    //     .addTo(map); // add the marker to the map
+
+    // === MAPBOX MARKERS AND POPUPS
+
+    // ===  Markers
+
+    // let map = new mapboxgl.Map({
+    //     container: 'map', // container ID
+    //     style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    //     center: [-98.4916, 29.4252], // starting position [lng, lat]
+    //     zoom: 12 // starting zoom
+    // });
+    //
+    // let marker = new mapboxgl.Marker({
+    //     color: 'red' // colors the marker on map
+    // }) //creates instance of marker
+    //     .setLngLat([-98.4916, 29.4252]) //Creates new marker and location of new marker
+    //     .addTo(map); //which map to add marker
+
+
+    // === Popups
+
+    // Create a marker for Whiskey Cake and add a popup with info about it
+
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-97.5431, 35.5230], // starting position [lng, lat]
+        zoom: 17 // starting zoom
+    });
+
+    // create a marker
+
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-97.5431, 35.5230])
+        .addTo(map);
+
+    // create a popup
+    var popup = new mapboxgl.Popup() // Existance was created of popup
+        .setHTML('<h1 style="color: red">Whiskey Cake</h1><a href="https://whiskeycake.com/">Website</a>');
+    // Creates pop-up and its contents that will display when hovered or clicked
+    marker.setPopup(popup); // which marker you want + setting popup to add to it
 
 </script>
 </body>
