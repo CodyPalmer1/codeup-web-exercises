@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map Project</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- 5 Day Forcast -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+    <!-- Search Bar -->
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            width: 100%;
+            margin: auto;
+            height: 300px;
+            position: fixed;
+            bottom: 0;
+        }
+        h1{
+            text-align: center;
+            font-size: 40px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #location{
+            text-align: center;
+            font-size: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            margin-bottom: 20px;
+        }
+        .weather-item {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Weather App</h1>
+<div id="location"></div>
+
+<div  class="container">
+    <div class="row "id="date"></div>
+</div>
+
+<div id="map"></div>
+
+<!--mapbox-->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="../js/keys.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--api-->
+<script>
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-98.4916, 29.4252]
+    });
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    });
+
+    var locationName = "San Antonio";
+    $("#location").html(locationName);
+    geocoder.on('result', function(ev) {
+        console.log(ev);
+
+        locationName= ev.result.place_name;
+        $("#location").html(locationName);
+        getWeather(ev.result.center[1], ev.result.center[0])
+    });
+
+    map.addControl(geocoder);
+
+    //makes marker draggable and set to san antonio
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([-98.4916, 29.4252])
+        .addTo(map);
+
+    function onDragEnd() {
+        var lngLat = marker.getLngLat();
+
+        console.log(lngLat);
+        getWeather(lngLat.lat, lngLat.lng);
+        reverseGeocode({lng: -98.4861, lat: 29.4260}, MAPBOX_TOKEN).then(function(results) {
+            //address for The Alamo-------------------------------
+            console.log(results);
+            $("#location").html(results);
+
+        });
+    }
+
+
+    marker.on('dragend', onDragEnd);
+
+
+
+    map.on("click",function(e){
+
+        //updates the maps weather when clicking the map
+        // JSON.stringify(e.point)+"<br/>"+ JSON.stringify(e.lnglat); //idk wtf this is used for????
+        getWeather(e.lngLat.lat, e.lngLat.lng);
+
+
+        //need below line cause it'll add new markers eveytime the map is clicked if not
+        if(marker !== undefined) marker.remove();
+
+
+        //adds the marker when the mapped is clicked
+        marker = new mapboxgl.Marker()
+            .setLngLat([e.lngLat.lng, e.lngLat.lat])
+            .addTo(map);
+
+        $("#location").html(e);
+    });
+
+
+
+    var icons = [{name:"clear-day",image:"SVG/Sun.svg"}, {name:"clear-night",image:"SVG/Moon.svg"}, {name:"rain",image:"SVG/Cloud-Rain.svg"}, {name:"snow",image:"SVG/Cloud-Snow.svg"}, {name:"sleet",image:"SVG/Cloud-Hail.svg"}, {name:"wind",image:"SVG/Cloud-Wind.svg"},
+        {name:"fog",image:"SVG/Cloud-Fog.svg"}, {name:"cloudy",image:"SVG/Cloud.svg"}, {name:"partly-cloudy-day",image:"SVG/Cloud-Sun.svg"}, {name:"partly-cloudy-night",image:"SVG/Cloud-Fog-Moon.svg"}];
+    var userLat= 29.4241;
+    var userLon=-98.4936;
+    getWeather(userLat,userLon);
+
+    //gets the weather from the api
+    function getWeather(userLat, userLon) {
+
+        console.log(userLat, userLon);
+        $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/"+ userLat+","+userLon).done(function (data) {
+            console.log(data);
+
+            //how to get only three days to show up
+            var reports = data.daily.data.slice(0, 3);
+            console.log(reports);
+
+            var weather = '';
+//dont take in the entire report array, say one report one forcast, one forcast object, tak in a report and look and icon then do foreach loop
+            //then put that in the html
+
+            reports.forEach(function (report) {
+                icons.forEach(function (icon) {
+                    if (report.icon === icon.name) {
+                        report.url = icon.image
+                    }
+                });
+                // to get the correct time and day below--------------------------
+                var dateObject = new Date(report.time * 1000);
+
+
+                weather += "<div class='col-4 weather-item'>";
+                weather +=  "<div class='day bg-secondary text-white font-weight-bold'>"+dateObject.toDateString() + "</div>" ;
+                weather += "<div class='tempHigh'>Hightest: " + "<span class='temp'>"+ report.temperatureHigh +" &#8457 </span>"+ "</div>" ;
+                weather += "<div class='tempLow'>Lowest: "  + "<span class='temp'>"+ report.temperatureLow +" &#8457 </span>" + "</div>" ;
+                weather += "<img src='icon/" + report.url + "'/>";
+                weather += "<div class='clouds bg-secondary text-white font-weight-bold'> SUMMARY </div>";
+                weather += "<div class=' summary'>"+ report.summary +"</div>";
+                weather += "</div>"
+            });
+            $("#date").html(weather);
+//three day forcast to show up on the html
+        })
+    }
+
+    //icons to show up function
+    // function weatherIcon(icon, apiIcon){
+    //     for (var i = 0; i < iconArray.length; i++){
+    //         if (icons[i].name === apiIcon) {
+    //             return icons[i].url
+    //         }
+    //     }
+    // }
+    // "<div class='logo'><img src='icon/" + report.url + "'/></div>";
+
+</script>
+</body>
+</html>

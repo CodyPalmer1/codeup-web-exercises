@@ -58,7 +58,7 @@
 <!--</div>-->
 
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY29keXBhbG1lciIsImEiOiJjbDd5eG9rYXAxM3lyM3Zxc29iY3Fwd3NmIn0.YKqPdH3ykFEggT7SokyDgA';
+    mapboxgl.accessToken = MAPBOX_TOKEN;
 
     // let map = new mapboxgl.Map({
     //     container: 'map', // container ID
@@ -116,7 +116,6 @@
     ];
 
 
-    mapboxgl.accessToken = MAPBOX_TOKEN;
     var map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -135,15 +134,7 @@
                 .addTo(map);
         });
     });
-// function zoom(select) {
-//     if (select === 5) {
-//         map.setZoom(5);
-//     } else if (select === 15) {
-//         map.setZoom(15);
-//     } else if (select === 20) {
-//         map.setZoom(20)
-//     }
-// }
+
 </script>
 </body>
 </html>
