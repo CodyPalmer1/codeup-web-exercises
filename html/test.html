@@ -21,7 +21,7 @@
           rel="stylesheet">
     <style>
         .card {
-            margin: 9px;
+            margin: 7px;
         }
 
         #map {
@@ -31,6 +31,8 @@
             position: fixed;
             bottom: 0;
             margin: 0;
+            border-radius: 15px;
+            border: 5px solid cornflowerblue;
         }
 
         h1 {
@@ -41,6 +43,15 @@
 
         div > .card {
             height: 275px;
+        }
+
+        .navbar{
+            width: 100%;
+            margin: auto;
+        }
+
+        body {
+            background-image: url(../img/CloudBackground.jpeg);
         }
     </style>
 </head>
@@ -65,32 +76,32 @@
 <div id='map'></div>
 <!-- Cards for 5-day weather forecast -->
 <div class="d-flex w-75" id="contianer">
-    <div class="col-lg-3 card" style="width: 18rem;">
+    <div class="col-lg-3 card">
         <img class="card-img-top" src="" alt="Card image cap">
         <div class="card-body">
 
         </div>
     </div>
-    <div class="col-lg-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="col-lg-3 card">
+        <img class="card-img-top" src="" alt="Card image cap">
         <div class="card-body">
 
         </div>
     </div>
-    <div class="col-lg-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="col-lg-3 card">
+        <img class="card-img-top" src="" alt="Card image cap">
         <div class="card-body">
 
         </div>
     </div>
-    <div class="col-lg-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="col-lg-3 card">
+        <img class="card-img-top" src="" alt="Card image cap">
         <div class="card-body">
 
         </div>
     </div>
-    <div class="col-lg-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="col-lg-3 card">
+        <img class="card-img-top" src="" alt="Card image cap">
         <div class="card-body">
 
         </div>
@@ -128,7 +139,15 @@
             map.setCenter(result);
             map.setZoom(10);
         });
+    });
 
+    $.get("http://api.openweathermap.org/data/2.5/weather", {
+        APPID: WEATHER_APP_ID,
+        q:     "San Antonio",
+        // lat:    lt,
+        // lon:   long
+    }).done(function(data) {
+        console.log(data);
     });
 
     // let locationName = "City";
