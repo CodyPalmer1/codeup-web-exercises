@@ -20,6 +20,12 @@ nav{
     margin: 15px;
 }
 
+hr{
+    width: 85%;
+    align-self: center;
+    opacity: .15;
+}
+
 #forecast {
     display: flex;
     flex-direction: row;

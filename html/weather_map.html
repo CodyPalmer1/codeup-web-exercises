@@ -61,16 +61,16 @@
                             <img id="weatherIcons" class="d-flex justify-content-center"
                             src="https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" alt="Weather icon">
 
-                            <hr style="width: 85%; align-self: center; opacity: .15;" />
+                            <hr>
                             <p class="forecastFont ms-4">Description: <b>${data.list[i].weather[0].description}</b></p>
 
-                            <hr style="width: 85%; align-self: center; opacity: .15;" />
+                            <hr>
                             <p class="forecastFont ms-4">Humidity: <b>${data.list[i].main.humidity}</b></p>
 
-                            <hr style="width: 85%; align-self: center; opacity: .15; margin-top: 3px;" />
+                            <hr>
                             <p class="forecastFont ms-4">Wind: <b>${data.list[i].wind.speed}</b></p>
 
-                            <hr style="width: 85%; align-self: center; opacity: .15; margin-top: 3px;" />
+                            <hr>
                             <p class="forecastFont ms-4">Pressure: <b>${data.list[i].main.pressure}</b></p>
                         </div>
                     `
@@ -87,13 +87,12 @@
         });
         // API info from OpenWeather api displayed on cards.
         forecast.done(function(data) {
-            console.log(data);
             let today = new Date();
             let time = today.getHours() + ":" + today.getMinutes();
             if (today.getHours() > "12") {
-                time = time + " PM";
+                time = time + " pm";
             } else {
-                time = time + " AM";
+                time = time + " am";
             }
             let forecastCard = createHTML(data);
             $("#forecast").html(forecastCard);
@@ -110,7 +109,7 @@
     const map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
-        zoom: 11,
+        zoom: 10,
         center: [-96.7970, 32.7767]
     });
     let marker = new mapboxgl.Marker({draggable: true});
@@ -121,7 +120,7 @@
         marker.setLngLat(coordinates).addTo(map);
         map.flyTo({
             center: [coordinates.lng, coordinates.lat],
-            zoom: 15,
+            zoom: 10,
             essential: true
         });
         getRequest(coordinates.lat, coordinates.lng);
@@ -132,7 +131,7 @@
         let dragendCoord = marker.getLngLat();
         map.flyTo({
             center: [dragendCoord.lng, dragendCoord.lat],
-            zoom: 15,
+            zoom: 10,
             essential: true
         });
         getRequest(dragendCoord.lat, dragendCoord.lng);
