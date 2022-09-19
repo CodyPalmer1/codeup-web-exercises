@@ -24,8 +24,8 @@
 <!--NAVBAR-->
 <nav class="navbar">
     <div class="container-fluid">
-        <h1 class="navbar-brand mb-0 pt-0 fs-3" id="weatherTitle"><b>Cody's Weather Map</b><br /></h1>
-        <h1 id="currentLocation" class="mb-0 pt-0 fs-5"></h1>
+        <h1 id="weatherTitle"><b>Cody's Weather Map</b></h1>
+        <h1 id="currentLocation"></h1>
     </div>
 </nav>
 <!--Map / forecast for map-->
@@ -53,7 +53,7 @@
         for(let i = 0; i < 33; i += 8) {
             let date = new Date (data.list[i].dt * 1000).toLocaleString('default', {weekday: 'long'});
             html += `
-                        <div class="card shadow">
+                        <div class="card behind">
                             <h6 class="date card-header d-flex justify-content-center">${date}</h6>
                             <span class="low-high d-flex justify-content-center mt-2 fs-6">Low / High</span>
                             <h6 class="temp d-flex justify-content-center fw-bold">${data.list[i].main.temp_min}°F / ${data.list[i].main.temp_max}°F</h6>

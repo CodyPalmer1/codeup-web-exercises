@@ -2,9 +2,10 @@
     font-family: 'Anton', sans-serif;
 }
 
-.shadow{
-    width: 19%;
+.behind{
+    width: 275px;
     height: 325px;
+    border: solid 3px green;
 }
 
 body{
@@ -54,7 +55,20 @@ hr {
     color: white;
 }
 
-#currentLocation, #weatherTitle {
+
+#currentLocation{
+    margin-bottom: 0;
+    padding-top: 0;
+    font-size: 20px;
+    margin-left: 0;
+    color: #194806;
+}
+
+#weatherTitle{
+    margin-bottom: 0;
+    padding-top: 0;
+    font-size: 40px;
+    margin-left: 0;
     color: #194806;
 }
 
