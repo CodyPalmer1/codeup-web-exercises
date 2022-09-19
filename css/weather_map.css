@@ -1,0 +1,64 @@
+* {
+    font-family: 'Anton', sans-serif;
+}
+
+.shadow{
+    width: 19%;
+    height: 325px;
+}
+
+body{
+    background-color: rgba(121, 231, 51, 0.35);
+}
+
+nav{
+    height: 75px;
+}
+
+#header {
+    margin: 15px;
+}
+
+#forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.forecastFont {
+    margin: 4px 0;
+    font-size: 14px;
+    color: black;
+}
+
+#weatherIcons {
+    height: 50px;
+    width: 50px;
+    margin-left: 100px;
+}
+
+hr {
+    margin: 5px;
+}
+
+#map {
+    border: solid 5px #328a0e;
+    width: 100%;
+    height: 350px;
+    margin-top: 1em;
+    border-radius: 10px;
+}
+
+.navbar {
+    background-color: rgba(129, 234, 15, 0.74);
+    color: white;
+}
+
+#currentLocation, #weatherTitle {
+    color: #194806;
+}
+
+.mapboxgl-ctrl-geocoder--input, .card {
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
